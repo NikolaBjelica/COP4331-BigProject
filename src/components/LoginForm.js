@@ -96,7 +96,7 @@ const LoginForm = () => {
                     <div className = "text-lg text-center text-fourth">Don't have an account yet?</div>
                 </div>
                 <div className = "flex items-center justify-center">
-                    <a href="/login" className="font-medium text-fourth hover:text-black">
+                    <a href="/register" className="font-medium text-fourth hover:text-black">
                         Sign Up Here!
                     </a>
                 </div>
