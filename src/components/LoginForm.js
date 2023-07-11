@@ -13,7 +13,7 @@ const LoginForm = () => {
 
             try
             {
-                const response = await fetch('https://geobooks-e802c07bfa62.herokuapp.com/',
+                const response = await fetch('https://geobooks-e802c07bfa62.herokuapp.com/login',
                 {
                     method: 'POST',
                     headers:
