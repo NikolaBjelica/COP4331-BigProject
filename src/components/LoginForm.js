@@ -13,7 +13,7 @@ const LoginForm = () => {
 
             try
             {
-                const response = await fetch('/temp',
+                const response = await fetch('https://geobooks-e802c07bfa62.herokuapp.com/',
                 {
                     method: 'POST',
                     headers:
@@ -27,6 +27,7 @@ const LoginForm = () => {
                 {
                     const data = await response.json();
                     const authToken = data.token;
+                    console.log(authToken);
 
                     localStorage.setItem('personalToken', authToken);
                     router.push('/');
