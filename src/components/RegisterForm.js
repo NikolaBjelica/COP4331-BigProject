@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const RegisterForm = () => {
     const router = useRouter();
@@ -12,6 +13,7 @@ const RegisterForm = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault()
+        const apiUrl = process.env.API_URL;
 
         if (confirmPassword !== password)
         {
@@ -20,14 +22,20 @@ const RegisterForm = () => {
 
         try 
         {
-            const response = await fetch('/temp',
+            const response = await fetch(apiUrl + '/signup',
             {
                 method: 'POST',
                 headers: 
                 {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, password, firstName, lastName, email })
+                body: JSON.stringify({ 
+                    username: username, 
+                    password: password,
+                    firstName: firstName, 
+                    lastName: lastName, 
+                    email: email 
+                })
             });
       
             if (response.ok) 
@@ -143,9 +151,9 @@ const RegisterForm = () => {
                 <div className = "text-md text-center text-black">Already have an account?</div>
             </div>
             <div className = "flex items-center justify-center">
-                    <a href="/login" className="font-medium text-fourth hover:text-black">
+                    <Link href="/login" className="font-medium text-fourth hover:text-black">
                         Login Here!
-                    </a>
+                    </Link>
             </div>
         </form>
     </div>

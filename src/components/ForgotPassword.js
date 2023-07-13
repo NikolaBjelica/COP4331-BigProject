@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Link from 'next/link'
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('')
@@ -69,9 +70,9 @@ const ForgotPassword = () => {
                     </button>
                 </div>
                 <div className = "flex items-center justify-center">
-                    <a href="/login" className="font-medium text-fourth hover:text-black">
+                    <Link href="/login" className="font-medium text-fourth hover:text-black">
                         Go Back to Login
-                    </a>
+                    </Link>
                 </div>
         </form>
     </div>

@@ -2,18 +2,20 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const LoginForm = () => {
     const router = useRouter();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const apiUrl = process.env.API_URL;
 
     const handleSubmit = async (e) => {
             e.preventDefault()
 
             try
             {
-                const response = await fetch('https://geobooks-e802c07bfa62.herokuapp.com/login',
+                const response = await fetch(apiUrl + '/login',
                 {
                     method: 'POST',
                     headers:
@@ -22,7 +24,8 @@ const LoginForm = () => {
                     },
                     body: JSON.stringify({
                         username: username, 
-                        password: password})
+                        password: password
+                    })
                 });
 
                 if (response.ok)
@@ -83,9 +86,9 @@ const LoginForm = () => {
 
                 <div className="flex items-center justify-between">
                     <div className="text-md">
-                        <a href="/login/forgot-password" className="font-xl text-fourth hover:text-black">
+                        <Link href="/login/forgot-password" className="font-xl text-fourth hover:text-black">
                             Forgot your password?
-                        </a>
+                        </Link>
                     </div>
                 </div>
 
@@ -99,9 +102,9 @@ const LoginForm = () => {
                     <div className = "text-lg text-center text-fourth">Don't have an account yet?</div>
                 </div>
                 <div className = "flex items-center justify-center">
-                    <a href="/register" className="font-medium text-fourth hover:text-black">
+                    <Link href="/register" className="font-medium text-fourth hover:text-black">
                         Sign Up Here!
-                    </a>
+                    </Link>
                 </div>
         </form>
     </div>
