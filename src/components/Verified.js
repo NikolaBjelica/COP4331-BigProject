@@ -7,12 +7,11 @@ const Verified = () => {
 
   const apiUrl = process.env.API_URL;
   const router = useRouter()
+  const UrlParams = useSearchParams();
+  const token = UrlParams.get('token');
 
   const handleVerify = async (e) => 
   {
-      const UrlParams =useSearchParams()
-      const token = UrlParams.get('token');
-
       const response = await fetch(apiUrl + '/verify/' + token,
       {
           method: 'POST',
