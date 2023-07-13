@@ -28,7 +28,7 @@ const CreatePost = () => {
                         token: token,
                         title: title,
                         tag: tag,
-                        content: content
+                        body: content
                     }
                 )
             });
