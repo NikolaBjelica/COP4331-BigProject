@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const CreatePost = () => {
-
+    const router = useRouter();
     const [title, setTitle] = useState('');
     const [tag, setTag] = useState('');
     const [content, setContent] = useState('');
@@ -38,6 +39,7 @@ const CreatePost = () => {
                 const data = await response.json();
                 const authToken = data.token;
                 localStorage.setItem('personalToken', authToken)
+                router.push('/')
             }
 
             if (response.status === 404)
