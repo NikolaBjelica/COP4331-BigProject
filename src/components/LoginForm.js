@@ -12,7 +12,9 @@ const LoginForm = () => {
 
     const handleSubmit = async (e) => {
             e.preventDefault()
-
+            console.log('API_URL:', process.env.API_URL);
+            const loginUrl = process.env.API_URL + '/login';
+            console.log('Login URL:', loginUrl);
             try
             {
                 const response = await fetch(apiUrl + '/login',
