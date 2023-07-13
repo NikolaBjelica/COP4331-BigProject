@@ -8,13 +8,14 @@ const LoginForm = () => {
     const router = useRouter();
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const apiUrl = process.env.API_URL;
 
     const handleSubmit = async (e) => {
             e.preventDefault()
-            console.log('API_URL:', process.env.API_URL);
-            const loginUrl = process.env.API_URL + '/login';
-            console.log('Login URL:', loginUrl);
+            // console.log('API_URL:', process.env.API_URL);
+            // const loginUrl = process.env.API_URL + '/login';
+            // console.log('Login URL:', loginUrl);
             try
             {
                 const response = await fetch(apiUrl + '/login',
@@ -24,10 +25,12 @@ const LoginForm = () => {
                     {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        username: username, 
-                        password: password
-                    })
+                    body: JSON.stringify(
+                        {
+                            username: username, 
+                            password: password
+                        }
+                    )
                 });
 
                 if (response.ok)
@@ -41,7 +44,9 @@ const LoginForm = () => {
                 }
                 else if (response.status === 401)
                 {
-                    console.log('Invalid Credentials');
+                    // An error has occured
+                    const data = await response.json();
+                    setErrorMessage(data.message)
                 }
 
                 else 
@@ -107,6 +112,9 @@ const LoginForm = () => {
                     <Link href="/register" className="font-medium text-fourth hover:text-black">
                         Sign Up Here!
                     </Link>
+                </div>
+                <div className = "flex items-center justify-center">
+                    <div className = "text-lg text-center text-black">{errorMessage}</div>
                 </div>
         </form>
     </div>
