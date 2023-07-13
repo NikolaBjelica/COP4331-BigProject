@@ -14,16 +14,11 @@ const Verified = () => {
   {
       const response = await fetch(apiUrl + '/verify/' + token,
       {
-          method: 'POST',
+          method: 'GET',
           headers: 
           {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify(
-              { 
-                  token: token
-              }
-          )
       });
 
       if (response.ok)
