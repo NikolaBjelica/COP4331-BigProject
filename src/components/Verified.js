@@ -12,6 +12,7 @@ const Verified = () => {
 
   const handleVerify = async (e) => 
   {
+    e.preventDefault();
       const response = await fetch(apiUrl + '/verify/' + token,
       {
           method: 'GET',
