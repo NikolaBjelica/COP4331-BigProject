@@ -14,7 +14,7 @@ const Verified = () => {
   {
       const response = await fetch(apiUrl + '/verify/' + token,
       {
-          method: 'POST',
+          method: 'GET',
           headers: 
           {
               'Content-Type': 'application/json'
