@@ -7,6 +7,7 @@ const ForgotPassword = () => {
     const [token, setToken] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
+    const apiUrl = process.env.API_URL;
 
     const handleEmail = async (e) => {
             e.preventDefault()
@@ -18,7 +19,7 @@ const ForgotPassword = () => {
 
             try
             {
-                const response = await fetch('/temp',
+                const response = await fetch(apiUrl + '/reset-password',
                 {
                     method: 'POST',
                     headers:
@@ -28,7 +29,7 @@ const ForgotPassword = () => {
                     body: JSON.stringify(
                         {
                             token: token, 
-                            newPassword: newPassword
+                            password: newPassword
                         }
                     )
                 });
