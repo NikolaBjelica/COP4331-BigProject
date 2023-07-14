@@ -8,6 +8,7 @@ const ForgotPassword = () => {
     const [newPassword, setNewPassword] = useState('')
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
     const apiUrl = process.env.API_URL;
+    const router = useRouter();
 
     const handleEmail = async (e) => {
             e.preventDefault()
@@ -36,7 +37,8 @@ const ForgotPassword = () => {
 
                 if (response.ok)
                 {
-                    console.log('Password Updated Successfully')
+                    console.log('Password Updated Successfully');
+                    router.push('/login');
                 }
 
                 else if (response.status === 400)
