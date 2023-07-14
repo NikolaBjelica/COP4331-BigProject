@@ -25,7 +25,12 @@ const ForgotPassword = () => {
                     {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({token, newPassword})
+                    body: JSON.stringify(
+                        {
+                            token: token, 
+                            newPassword: newPassword
+                        }
+                    )
                 });
 
                 if (response.ok)
