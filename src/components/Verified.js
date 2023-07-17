@@ -10,36 +10,32 @@ const Verified = () =>
   const UrlParams = useSearchParams();
   const token = UrlParams.get('token');
 
-
-  useEffect(() => {
-    const handleVerify = async () => {
-      try 
+  const handleVerify = async (e) => 
+  {
+    e.preventDefault();
+      const response = await fetch(apiUrl + '/verify/' + token,
       {
-        const response = await fetch(apiUrl + '/verify/' + token, 
-        {
           method: 'GET',
-          headers:
+          headers: 
           {
-            'Content-Type': 'application/json',
+              'Content-Type': 'application/json'
           },
-        });
+      });
 
-        if (response.ok) 
-        {
-          router.push('/login');
-        }
-      } 
-      catch (error)       
+      if (response.ok)
       {
-        console.log('Verification error:', error);
+        router.push('/login')
       }
-    };
+  }
 
-    if (token) 
+  useEffect(() =>
+  {
+    if (token)
     {
       handleVerify();
     }
-  }, [apiUrl, router, token]);
+  }, [router, token, router]);
+  
 
   return (
     <div>
