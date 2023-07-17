@@ -59,8 +59,7 @@ const Navbar = () => {
             }
         };
 
-        const temp = checkLoginStatus();
-        setIsLoggedIn(temp);
+        checkLoginStatus();
 
     }, []);
 
