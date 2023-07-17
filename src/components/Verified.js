@@ -12,6 +12,8 @@ const Verified = () =>
 
   const handleVerify = async () => 
   {
+    // Makes a stall before it transfer you to the next page ('/login')
+    await new Promise((resolve) => setTimeout(resolve, 5000)); 
       const response = await fetch(apiUrl + '/verify/' + token,
       {
           method: 'GET',
@@ -34,7 +36,7 @@ const Verified = () =>
       handleVerify();
     }
 
-  }, [router, token, router]);
+  }, [router, token, apiUrl]);
   
 
   return (
