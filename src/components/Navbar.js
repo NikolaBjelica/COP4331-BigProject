@@ -17,6 +17,12 @@ const Navbar = () => {
         {
             try
             {
+                if (!token)
+                {
+                    setIsLoggedIn(false);
+                    return;
+                }
+
                 const response = await fetch(apiUrl + '/',
                 {
                     method: 'POST',
