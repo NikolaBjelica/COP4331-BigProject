@@ -110,7 +110,16 @@ const Navbar = () => {
                     </li>
                 </ul>
                 <ul className = "flex justify-between">
-                    {isLoggedIn ? (
+                    {!isLoggedIn ? (
+                        <>
+                            <li>
+                                <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToLogin}>Login</button>
+                            </li>
+                            <li>
+                                <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToRegister}>Sign Up</button>
+                            </li>
+                        </>
+                    ) : (
                         <>
                             <li>
                                 <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToCreatePost}>Create Post</button>
@@ -120,15 +129,6 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToLogOut}>Sign Out</button>
-                            </li>
-                        </>
-                    ) : (
-                        <>
-                            <li>
-                                <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToLogin}>Login</button>
-                            </li>
-                            <li>
-                                <button className = "px-4 py-2 ml-4 bg-fourth text-third text-xl rounded-full" onClick = {pushToRegister}>Sign Up</button>
                             </li>
                         </>
                     )}  
