@@ -9,12 +9,18 @@ const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [searchQuery, setSearchQuery] = useContext(SearchContext);
     const apiUrl = process.env.API_URL;
-    const token = localStorage.getItem('personalToken');
 
     useEffect(() => 
     {
-        const checkUserLoginStatus = async () => 
+        const checkLoginStatus = async () => 
         {
+            let token = null;
+
+            if (typeof window !== 'undefined')
+            {
+                token = localStorage.getItem('personalToken');
+            }
+
             try
             {
                 if (!token)
@@ -53,7 +59,7 @@ const Navbar = () => {
             }
         };
 
-        const temp = checkUserLoginStatus();
+        const temp = checkLoginStatus();
         setIsLoggedIn(temp);
 
     }, []);
