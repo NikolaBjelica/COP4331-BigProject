@@ -10,9 +10,8 @@ const Verified = () =>
   const UrlParams = useSearchParams();
   const token = UrlParams.get('token');
 
-  const handleVerify = async (e) => 
+  const handleVerify = async () => 
   {
-    e.preventDefault();
       const response = await fetch(apiUrl + '/verify/' + token,
       {
           method: 'GET',
@@ -34,6 +33,7 @@ const Verified = () =>
     {
       handleVerify();
     }
+
   }, [router, token, router]);
   
 
