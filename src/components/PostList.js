@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { SearchContext } from './SearchContext';
-import { checkLoginStatus } from './Navbar';
 
 export const PostList = () => {
     const router = useRouter();
@@ -62,8 +61,7 @@ export const PostList = () => {
         {
             if (!token)
             {
-                setIsLoggedIn(false);
-                return;
+                router.push('/login');
             }
 
             const response = await fetch(apiUrl + '/',
@@ -74,9 +72,9 @@ export const PostList = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(
-                    {
-                        token: token
-                    }
+                {
+                    token: token
+                }
                 )
             });
 
@@ -116,7 +114,7 @@ export const PostList = () => {
             <div className = "text-4xl">{post.title}<span className = "ml-10 text-3xl text-fourth inline-block bg-primary px-2 rounded-full">{post.tag}</span></div>
             <div className = "text-lg">{post.content}</div>
             <div className = "flex justify-center">
-                <button className = "px-4 py-2 ml-4 bg-fourth text-primary text-xl rounded-full" onClick = {pushToPostPage}>Read More</button>
+                <button type = "button"className = "px-4 py-2 ml-4 bg-fourth text-primary text-xl rounded-full" onClick = {pushToPostPage}>Read More</button>
             </div>
             </form>
         </div>
