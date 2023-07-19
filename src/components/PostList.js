@@ -102,7 +102,11 @@ export const PostList = () => {
 
     if (loading) 
     {
-        return <div className = "text-black text-center text-5xl">Loading...</div>;
+        return(
+            <div className = "flex items-center justify-center">
+                <div className = "text-black text-center text-5xl inline-block rounded-full px-8 py-4 bg-primary">Loading...</div>
+            </div>
+        )
     }
 
   return (
