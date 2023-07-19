@@ -97,7 +97,7 @@ const ForgotPassword = () => {
                         Make New Password
                     </button>
                 </div>
-                <div className = "flex text-center">
+                <div className = "flex items-center justify-center">
                     {errorMessage}
                 </div>
         </form>
