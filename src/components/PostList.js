@@ -52,8 +52,7 @@ export const PostList = () => {
                 },
                 body: JSON.stringify(
                 {
-                    token: token,
-                    tag: searchQuery,
+                    tag: searchQuery
                 }),
         });
 
