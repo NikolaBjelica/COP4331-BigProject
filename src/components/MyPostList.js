@@ -52,7 +52,7 @@ export const MyPostList = () => {
                 },
                 body: JSON.stringify(
                 {
-                    search: searchQuery,
+                    tag: searchQuery,
                     token: token
                 }),
             });
@@ -61,6 +61,7 @@ export const MyPostList = () => {
             {
                 const data = await response.json();
                 setLoading(false);
+                console.log(data.results);
                 setPosts(data.results);
             } 
             else if (response.status === 404) 
